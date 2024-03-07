@@ -140,9 +140,6 @@ function makeWord(lettersObject) {
   return result.join('');
 }
 
-// makeWord({ a: [0, 1], b: [2, 3], c: [4, 5] });
-// makeWord({ H: [0], e: [1], l: [2, 3, 8], o: [4, 6], W: [5], r: [7], d: [9] });
-
 /**
  * There is a queue for tickets to a popular movie.
  * The ticket seller sells one ticket at a time strictly in order and give the change.
@@ -161,6 +158,15 @@ function sellTickets(/* queue */) {
   throw new Error('Not implemented');
 }
 
+// function sellTickets(queue) {
+//   let sells = queue[0];
+//   for (let i = 1; i < queue.length; i += 1) {
+//     if (queue[i] === 25) {
+//       sells += queue[i];
+//     }
+//   }
+// }
+
 /**
  * Returns the rectangle object with width and height parameters and getArea() method
  *
@@ -174,8 +180,23 @@ function sellTickets(/* queue */) {
  *    console.log(r.height);      // => 20
  *    console.log(r.getArea());   // => 200
  */
-function Rectangle(/* width, height */) {
-  throw new Error('Not implemented');
+function Rectangle(width, height) {
+  // const obj = {
+  //   width,
+  //   height,
+  //   getArea: () => {
+  //     return width * height;
+  //   },
+  // };
+
+  // return obj;
+  return {
+    width,
+    height,
+    getArea: () => {
+      return width * height;
+    },
+  };
 }
 
 /**
