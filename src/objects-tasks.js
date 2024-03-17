@@ -247,13 +247,22 @@ function fromJSON(proto, json) {
  */
 function sortCitiesArray(arr) {
   arr.sort((a, b) => {
+    return a.city.localeCompare(b.city);
+  });
+  return arr.sort((a, b) => {
     return a.country.localeCompare(b.country);
   });
-
-  return arr.sort((a, b) => {
-    return a.city - b.city;
-  });
 }
+// console.log(
+//   sortCitiesArray([
+//     { country: 'Russia', city: 'Moscow' },
+//     { country: 'Belarus', city: 'Minsk' },
+//     { country: 'Poland', city: 'Warsaw' },
+//     { country: 'Russia', city: 'Saint Petersburg' },
+//     { country: 'Poland', city: 'Krakow' },
+//     { country: 'Belarus', city: 'Brest' },
+//   ])
+// );
 
 /**
  * Groups elements of the specified array by key.
