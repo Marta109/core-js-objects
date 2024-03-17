@@ -154,18 +154,15 @@ function makeWord(lettersObject) {
  *    sellTickets([25, 25, 50]) => true
  *    sellTickets([25, 100]) => false (The seller does not have enough money to give change.)
  */
-function sellTickets(/* queue */) {
-  throw new Error('Not implemented');
-}
 
-// function sellTickets(queue) {
-//   let sells = queue[0];
-//   for (let i = 1; i < queue.length; i += 1) {
-//     if (queue[i] === 25) {
-//       sells += queue[i];
-//     }
-//   }
-// }
+function sellTickets(queue) {
+  let sells = queue[0];
+  for (let i = 1; i < queue.length; i += 1) {
+    if (queue[i] > sells) return false;
+    sells += queue[i];
+  }
+  return true;
+}
 
 /**
  * Returns the rectangle object with width and height parameters and getArea() method
@@ -253,16 +250,6 @@ function sortCitiesArray(arr) {
     return a.country.localeCompare(b.country);
   });
 }
-// console.log(
-//   sortCitiesArray([
-//     { country: 'Russia', city: 'Moscow' },
-//     { country: 'Belarus', city: 'Minsk' },
-//     { country: 'Poland', city: 'Warsaw' },
-//     { country: 'Russia', city: 'Saint Petersburg' },
-//     { country: 'Poland', city: 'Krakow' },
-//     { country: 'Belarus', city: 'Brest' },
-//   ])
-// );
 
 /**
  * Groups elements of the specified array by key.
@@ -297,17 +284,6 @@ function sortCitiesArray(arr) {
 function group(array, keySelector, valueSelector) {
   const returnMap = new Map();
 
-  // console.log(objArr);
-  // for (const el of array) {
-  //   obj[el.country] === undefined
-  //     ? (obj[el.country] = [el.city])
-  //     : obj[el.country].push(el.city);
-  // }
-  // for (const key in obj) {
-  //   returnMap.set(key, obj[key]);
-  //   console.log(obj[key]);
-  // }
-
   array.forEach((item) => {
     const key = keySelector(item);
     const value = valueSelector(item);
@@ -321,19 +297,6 @@ function group(array, keySelector, valueSelector) {
 
   return returnMap;
 }
-
-group(
-  [
-    { country: 'Belarus', city: 'Brest' },
-    { country: 'Russia', city: 'Omsk' },
-    { country: 'Russia', city: 'Samara' },
-    { country: 'Belarus', city: 'Grodno' },
-    { country: 'Belarus', city: 'Minsk' },
-    { country: 'Poland', city: 'Lodz' },
-  ],
-  (item) => item.country,
-  (item) => item.city
-);
 
 /**
  * Css selectors builder
